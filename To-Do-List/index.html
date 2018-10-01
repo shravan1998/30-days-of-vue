@@ -11,9 +11,18 @@
 <body>
     <div id="vue-app">
         <div class="container">
-            <input type="text" ref="input" id="text"/>
-            <button id="submit" v-on:click="showtask()">Click</button>
-            <div>{{task}}</div>
+            <div class="header">
+                    <todo-form @todo-created="add-todo"></todo-form>
+            </div>
+            
+            <div class="todo-items">
+                <todo-item
+                    @todo-completed='completedTodo'
+                    v-for="item in filterTodo"
+                    v-bind:todo="item"
+                    v-bind:key="item.id">
+                </todo-item>
+            </div>
            </div>
 </div>
 </body>
